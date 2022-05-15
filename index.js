@@ -1,13 +1,16 @@
 // Require the necessary discord.js classes
 const { Client, Intents } = require('discord.js');
 const dotenv = require('dotenv');
+const { GiphyFetch } = require('@giphy/js-fetch-api');
 
 dotenv.config();
 
-const messagesToListenFor = ['quiet', 'yo', 'hey', 'mo'];
+const messagesToListenFor = ['quiet', 'hey', 'mo', 'mo?'];
 
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES], partials: ['CHANNEL'] });
+
+const giphyFetch = new GiphyFetch(process.env.GIPHY_API_KEY);
 
 // When the client is ready, run this code (only once)
 client.once('ready', () => {
@@ -20,8 +23,14 @@ client.on('messageCreate', async message => {
 		return;
 	}
 
-	if (messagesToListenFor.some(msg => message.content.includes(msg))) {
-		message.reply('Quiet plz!');
+	const words = message.content.split(' ');
+
+	for (const word of words) {
+		if (messagesToListenFor.some(msg => msg === word.toLowerCase())) {
+			const { data: gif } = await giphyFetch.random({ tag: 'quiet please' });
+			message.reply(`Quiet plz!\n${gif.images.original.url}`);
+			return;
+		}
 	}
 });
 
