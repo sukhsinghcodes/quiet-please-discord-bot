@@ -1,6 +1,11 @@
+// Polyfill for fetch
+const fetch = require('node-fetch');
+global.fetch = fetch;
+
 // Require the necessary discord.js classes
 const { Client, Intents } = require('discord.js');
 const dotenv = require('dotenv');
+
 const { GiphyFetch } = require('@giphy/js-fetch-api');
 
 dotenv.config();
