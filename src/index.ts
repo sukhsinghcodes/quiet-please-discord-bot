@@ -1,12 +1,8 @@
-// Polyfill for fetch
-const fetch = require('node-fetch');
-global.fetch = fetch;
-
 // Require the necessary discord.js classes
-const { Client, Intents } = require('discord.js');
-const dotenv = require('dotenv');
+import { Client, Intents } from 'discord.js';
+import dotenv from 'dotenv';
 
-const { GiphyFetch } = require('@giphy/js-fetch-api');
+import { GiphyFetch } from '@giphy/js-fetch-api';
 
 dotenv.config();
 
@@ -14,6 +10,7 @@ const messagesToListenFor = ['quiet', 'hey', 'mo', 'mo?'];
 
 // Create a new client instance
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.DIRECT_MESSAGES], partials: ['CHANNEL'] });
+console.log('Starting Quiet Please Bot...')
 
 const giphyFetch = new GiphyFetch(process.env.GIPHY_API_KEY);
 
