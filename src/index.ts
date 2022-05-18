@@ -6,7 +6,8 @@ import { GiphyFetch } from '@giphy/js-fetch-api';
 
 dotenv.config();
 
-const messagesToListenFor = ['quiet', 'hey', 'mo', 'mo?'];
+const quietWords = ['quiet', 'quietings', 'quieting', 'allow that', 'allow it'];
+const moWords = ['mo', 'mo?', 'mouhannad'];
 
 // Create a new client instance
 const client = new Client({
@@ -30,9 +31,13 @@ client.on('messageCreate', async (message) => {
   const words = message.content.split(' ');
 
   for (const word of words) {
-    if (messagesToListenFor.some((msg) => msg === word.toLowerCase())) {
+    if (moWords.some((msg) => msg === word.toLowerCase())) {
+      message.channel.send('Mo?');
+      return;
+    }
+    if (quietWords.some((msg) => msg === word.toLowerCase())) {
       const { data: gif } = await giphyFetch.random({ tag: 'quiet please' });
-      message.reply(`Quiet plz!\n${gif.images.original.url}`);
+      message.channel.send(`Quiet please!\n${gif.images.original.url}`);
       return;
     }
   }
