@@ -6,7 +6,7 @@ Eventually I will enhance it by adding mini text based games e.g. rock, paper, s
 
 The aim of this is to play around and try different things with the Discord.js library and get more familiar with the devops of AWS.
 
-## Intructions
+## Instructions
 
 Build docker image
 `docker build . -t quiet-please-discord-bot`
