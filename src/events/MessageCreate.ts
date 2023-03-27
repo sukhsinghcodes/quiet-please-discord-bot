@@ -2,8 +2,19 @@ import { GiphyFetch } from '@giphy/js-fetch-api';
 import { Message } from 'discord.js';
 
 export class MessageCreate {
-  private quietWords = ['quiet', 'quietings', 'quieting'];
-  private moWords = ['mo', 'mo?', 'mouhannad', 'mouhannad!', 'mo!'];
+  private quietWords = [
+    'quiet',
+    'quietings',
+    'quieting',
+    'quieting!',
+    'quieting please',
+    'quieting please!',
+    'quiet please',
+    'quiet please!',
+    'quiet please!',
+    'quiet please!',
+  ];
+  private moWords = ['mo', 'mo?', 'mouhannad', 'mouhannad!', 'mo!', 'mouhannad?'];
   private giphyFetch: GiphyFetch;
 
   constructor(giphyFetch) {
