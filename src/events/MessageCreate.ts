@@ -35,7 +35,7 @@ export class MessageCreate {
       }
       if (this.quietWords.some((msg) => msg === word.toLowerCase())) {
         const { data: gif } = await this.giphyFetch.random({ tag: 'quiet please' });
-        message.channel.send(`Quiet please!\n${gif.images.original.url}`);
+        message.reply({ content: 'Quiet Please!', files: [gif.images.fixed_height.url] });
         return;
       }
     }
