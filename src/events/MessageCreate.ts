@@ -4,15 +4,15 @@ import { Message } from 'discord.js';
 export class MessageCreate {
   private quietWords = [
     'quiet',
+    'quiet!',
     'quietings',
+    'quietings!',
     'quieting',
     'quieting!',
-    'quieting please',
-    'quieting please!',
-    'quiet please',
-    'quiet please!',
-    'quiet please!',
-    'quiet please!',
+    'shh',
+    'shh!',
+    'shhh',
+    'shhh!',
   ];
   private moWords = ['mo', 'mo?', 'mouhannad', 'mouhannad!', 'mo!', 'mouhannad?'];
   private giphyFetch: GiphyFetch;
