@@ -29,6 +29,7 @@ client.login(process.env.DISCORD_TOKEN);
 function exitHandler() {
   client.destroy();
   console.log('Quiet Please bot offline!');
+  process.exit(0);
 }
 
 process.once('SIGINT', exitHandler);
