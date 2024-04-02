@@ -25,3 +25,11 @@ client.on('messageCreate', messageCreate.onMessageCreate);
 
 // Login to Discord with your client's token
 client.login(process.env.DISCORD_TOKEN);
+
+function exitHandler() {
+  client.destroy();
+  console.log('Quiet Please bot offline!');
+}
+
+process.once('SIGINT', exitHandler);
+process.once('SIGTERM', exitHandler);
